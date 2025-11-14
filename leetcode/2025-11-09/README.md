@@ -36,44 +36,21 @@ Constraints:
 
 
 ## My Thoughts
+This problem looked dead simple at first: just keep subtracting the smaller number from the bigger one until one of them hits zero. My first instinct was to literally simulate the process using a loop and one subtraction per iteration. That worked and matched the examples, but it felt a little brute-force.
 
-This problem looked complicated right from the start. Trying to pick the “largest subset” of binary strings with limits on how many 0s and 1s I can use felt messy. My first instinct was to think of it like trying combinations or brute-forcing subsets, but that would blow up instantly.
+The interesting part came when I realized this process behaves exactly like the Euclidean algorithm for computing the GCD, except instead of dividing, we’re counting every subtraction. When one number is much larger than the other, subtracting one-by-one is extremely inefficient. The loop can end up doing thousands of operations when really the answer is just “how many times does the smaller fit into the larger?”
 
-The moment things started to make sense was when I realized each string has a cost: some number of zeros and some number of ones. And we have a fixed “budget” of m zeros and n ones. This is basically a knapsack problem, but with two constraints instead of one.
+Once I saw that, the problem changed from “simulate the process” to “compress the process.” Instead of subtracting repeatedly, I could jump ahead by subtracting the smaller number k times at once, where k is Math.floor(bigger / smaller). Then I just use % to get the remainder and continue. It still follows the exact rules of the problem, it just counts all the subtractions in one shot.
 
-Once I understood that, the structure became much clearer:
-
-Each string is either taken or not taken.
-
-If I take it, I subtract its zeros and ones from my available capacity.
-
-If I don’t take it, nothing changes.
-
-I want to maximize how many strings I take.
-
-That’s exactly how knapsack works. The DP table (dp[i][j]) was just tracking how many strings I can build if I have i zeros and j ones available.
-
-The other big realization was that the DP needs to be updated backwards. If I go forward, I’d reuse the same string multiple times. Going backwards ensures each string contributes at most once.
-
-Once all that clicked, the solution was surprisingly clean.
+This made the solution go from a linear (and sometimes slow) loop to something that finishes in just a handful of steps regardless of input size.
 
 ## What I Learned
 
-This problem is a classic example of a 0/1 knapsack, but with two dimensions (zeros and ones).
-
-Counting zeros and ones in each string is essential before you even think about DP.
-
-A DP table like dp[zeros][ones] is a powerful way to track the best result under multiple constraints.
-
-The “take or skip” transition is always the same in knapsack:
-
-dp[i][j] = max(dp[i][j], dp[i - zeros][j - ones] + 1)
-
-
-Iterating the DP table backwards prevents double-counting an item.
-
-Even though the problem looks like combinatorics or subsets, it’s actually solved through a structured DP approach.
-
-The final answer is simply dp[m][n], after processing every string.
-
-This challenge helped reinforce how knapsack problems can show up in unexpected forms, and how identifying the “cost” and “capacity” parts early makes everything else fall into place.
+- This operation is basically the Euclidean algorithm in disguise, except we’re counting the number of subtractions.
+- A naïve loop that subtracts once per iteration is correct, but can be O(n) in the size of the numbers.
+-The optimized approach jumps ahead using:
+    - times = Math.floor(bigger / smaller)
+    - remainder = bigger % smaller
+- That optimization turns the problem into O(log n), which is much more efficient.
+- Sometimes the best solution isn’t “simulate exactly what the problem says,” but “understand the structure behind what the problem is doing.”
+- Recognizing hidden patterns (like GCD-style behavior) can turn a brute-force solution into a clean, elegant one.

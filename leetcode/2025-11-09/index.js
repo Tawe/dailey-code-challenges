@@ -1,29 +1,19 @@
-function findMaxForm(strs, m, n) {
-  // dp[i][j] = max number of strings using at most i zeros and j ones
-  const dp = Array.from({ length: m + 1 }, () =>
-    new Array(n + 1).fill(0)
-  );
+var countOperations = function(num1, num2) {
+    let count = 0;
 
-  for (const s of strs) {
-    let zeros = 0;
-    let ones = 0;
-
-    // count zeros and ones in this string
-    for (const ch of s) {
-      if (ch === '0') zeros++;
-      else if (ch === '1') ones++;
+    while (num1 !== 0 && num2 !== 0) {
+        if (num1 >= num2) {
+            const times = Math.floor(num1 / num2); // how many subtractions at once
+            count += times;
+            num1 = num1 % num2; // leftover after all those subtractions
+        } else {
+            const times = Math.floor(num2 / num1);
+            count += times;
+            num2 = num2 % num1;
+        }
     }
 
-    // classic 0/1 knapsack update: loop backwards
-    for (let i = m; i >= zeros; i--) {
-      for (let j = n; j >= ones; j--) {
-        dp[i][j] = Math.max(
-          dp[i][j],
-          dp[i - zeros][j - ones] + 1
-        );
-      }
-    }
-  }
+    return count;
+};
 
-  return dp[m][n];
-}
+const x = countOperations(2,3)
