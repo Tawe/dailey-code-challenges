@@ -50,3 +50,17 @@ Constraints:
 
 1 <= n == nums.length <= 105
 0 <= nums[i] <= 105
+
+## My Thoughts
+This problem felt confusing at first because the operation is worded in a way that makes you think you need to simulate subarrays and repeatedly zero things out. But the real trick is noticing that the rule “minimum value in the subarray becomes 0” effectively creates layer boundaries in the array. Every time the array value drops, a layer ends. Every time the value rises to something new, a layer begins.
+
+Once you see the array as a stack of rising and falling heights, the operations are no longer about subarrays, they’re about counting how many “segments” of increasing values you pass through from left to right.
+
+The monotonic stack captures this perfectly. You push values when you rise, and you pop values (and count an operation) when the array drops. At the end, any leftover levels still count as operations. It's surprisingly elegant compared to the messy simulation you'd expect from the problem description.
+
+## What I Learned
+- You don’t need to simulate the operations at all, you just need to count value “layers.”
+- Zeros and lower values effectively form breakpoints between segments, but the algorithm never has to check this explicitly; the stack automatically handles it.
+- A monotonic stack is an extremely powerful pattern for problems involving rising/falling sequences, segmentation, or interpreting arrays as layered structures.
+- The optimal solution is linear time (O(n)), and every value is pushed and popped at most once.
+- This problem reinforces the idea that when a problem describes a complicated operation, the optimal solution often involves finding the underlying structure rather than simulating the process.
