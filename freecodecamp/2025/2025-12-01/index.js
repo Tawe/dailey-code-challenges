@@ -1,7 +1,8 @@
 function convertToKm(miles) {
-  return (miles * 1.61).toFixed(2);
+  const km = miles * 1.60934;
+  return Number(km.toFixed(2));
 }
 
 
-const x = convertToKm(21)
+const x = convertToKm(0.00000071)
 x;
