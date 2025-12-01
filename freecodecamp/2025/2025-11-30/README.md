@@ -24,7 +24,7 @@ Once I stepped back and rewrote the rules in plain English—using the test case
 
 The final result ended up being clean, readable, and makes sense logically it aligns perfectly with the example outputs, which is the real goal.
 
-## My thoughts
+## What I learned
 
 - The challenge wasn’t about advanced regex, it was about interpreting natural language rules precisely.
 - Counting long words requires extracting [A-Za-z]+ sequences, not just splitting text on spaces.
