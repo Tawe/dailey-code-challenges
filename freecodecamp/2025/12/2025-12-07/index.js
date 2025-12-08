@@ -19,3 +19,6 @@ function compressString(sentence) {
 
     return result.join(" ");
 }
+
+const x = compressString("yes yes yes please")
+x;
