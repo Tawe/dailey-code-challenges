@@ -1,5 +1,5 @@
 # 2025-12-10
-[2025-12-08 Challenge](https://www.freecodecamp.org/learn/daily-coding-challenge/2025-12-08)
+[2025-12-10 Challenge](https://www.freecodecamp.org/learn/daily-coding-challenge/2025-12-10)
 
 ## Instructions.    
 Markdown Bold Parser
