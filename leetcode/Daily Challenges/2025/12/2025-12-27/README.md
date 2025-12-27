@@ -50,3 +50,20 @@ Constraints:
 meetings[i].length == 2
 0 <= starti < endi <= 5 * 105
 All the values of starti are unique.
+
+## My Thoughts
+
+At first, I assumed that the heap-based solution must be the “best” one, since it has a better theoretical time complexity. When I wrote a simpler solution that scanned all rooms for each meeting, I expected it to be slower, but LeetCode’s runtime results showed the opposite.
+
+That forced me to rethink what “optimal” actually means in practice. Given that the number of rooms is very small (at most 100), a linear scan over rooms is cheap, and the simpler control flow avoids the overhead of heap operations in JavaScript.
+
+This was a good reminder that clean, straightforward code can outperform more complex algorithms when the constraints allow it. Instead of blindly optimizing for Big-O, I had to consider the real cost of data structures in the language I’m using.
+
+
+## What I Learned
+	•	Asymptotic complexity isn’t the whole story — constant factors matter.
+	•	JavaScript heap implementations are relatively expensive compared to simple loops.
+	•	When one dimension of the input is tightly bounded (n ≤ 100), an O(m·n) solution can be faster than O(m log n).
+	•	LeetCode’s performance rankings are based on real execution time, not theoretical complexity.
+	•	Simpler code is often easier to reason about and easier for the runtime to optimize.
+	•	“Optimal” depends on context: language, constraints, and platform all matter.
