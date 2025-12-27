@@ -1,31 +1,28 @@
 # 2025-12-26
 [2025-12-26 Challenge](https://www.freecodecamp.org/learn/daily-coding-challenge/2025-12-26)
 
+
 ## Instructions
-Rock, Paper, Scissors
-Given two strings, the first representing Player 1 and the second representing Player 2, determine the winner of a match of Rock, Paper, Scissors.
+Sum of Divisors
+Given a positive integer, return the sum of all its divisors.
 
-The input strings will always be "Rock", "Paper", or "Scissors".
-"Rock" beats "Scissors".
-"Paper" beats "Rock".
-"Scissors" beats "Paper".
-Return:
+- A divisor is any integer that divides the number evenly (the remainder is 0).
+- Only count each divisor once.
 
-"Player 1 wins" if Player 1 wins.
-"Player 2 wins" if Player 2 wins.
-"Tie" if both players choose the same option.
+For example, given 6, return 12 because the divisors of 6 are 1, 2, 3, and 6, and the sum of those is 12.
 
 ## My Thoughts
 
-This problem was very straightforward once I recognized that there are only a fixed number of possible inputs. Because the domain is so small and well-defined, the solution doesn’t need anything fancy, just clear conditional logic.
+My initial solution focused on clarity and correctness by checking every number from 1 through n to see if it was a divisor. That approach works well conceptually and makes the definition of a divisor very explicit, which is helpful when first thinking about the problem.
 
-I made sure to handle the tie case first, since that short-circuits the rest of the logic. After that, listing out Player 1’s winning conditions made the remaining case easy to handle without additional checks.
+However, stepping back and thinking about how divisors actually behave revealed that this was doing more work than necessary. Every divisor comes with a complementary pair, which means checking all the way up to n isn’t required.
 
-This was a good reminder that sometimes the most readable solution is also the best one.
+This was a good example of how a correct solution isn’t always an optimal one, and how understanding the mathematical structure of a problem can lead to better performance.
+
 
 ## What I Learned
-	•	When the input space is small and fixed, simple conditionals are often optimal.
-	•	Handling base cases (like ties) early simplifies the rest of the logic.
-	•	Clarity and correctness matter more than clever abstractions in simple problems.
-	•	Lookup tables can make solutions more scalable, but aren’t always necessary.
-	•	Not every problem needs optimization beyond constant time.
+	•	Divisors always come in pairs (i and n / i).
+	•	You only need to check up to √n to find all divisors.
+	•	Correctness and efficiency are separate concerns, a solution can be right but slow.
+	•	Simple mathematical observations can dramatically improve performance.
+	•	Optimization often comes from understanding why something works, not just making it work.
