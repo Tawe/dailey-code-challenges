@@ -14,3 +14,6 @@ function numOfWays(n: number): number {
   
     return Number((aba + abc) % MOD);
   };
+
+const x = numOfWays(5000)
+x;
