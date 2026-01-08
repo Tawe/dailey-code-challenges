@@ -27,7 +27,7 @@ Splitting the input by newlines made it easy to process each item independently.
 
 There wasn’t much algorithmic complexity here, the main focus was correctness and faithfully following the format rules rather than trying to be clever.
 
-## What I Learned
+##  What I Learned
 	•	Many parsing problems become much simpler when you break the input into logical units (lines, tokens, etc.).
 	•	When converting formats (Markdown → HTML), clarity is often more important than micro-optimizations.
 	•	join is a great way to assemble structured output without messy string concatenation.
