@@ -9,4 +9,4 @@ function minTimeToVisitAllPoints(points: number[][]): number {
 }
 
 const x = minTimeToVisitAllPoints([[3,2],[-2,2]]);
-x;
+x;  
