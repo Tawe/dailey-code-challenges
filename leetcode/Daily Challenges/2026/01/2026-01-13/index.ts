@@ -45,4 +45,4 @@ function separateSquares(squares: number[][]): number {
 }
 
 const squares = [[1,1,1,1],[1,1,3,3],[1,1,3,4],[5,5,5,5]];
-separateSquares(squares);
+const x = separateSquares(squares);
