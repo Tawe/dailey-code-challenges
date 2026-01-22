@@ -1,4 +1,4 @@
-# 2026-01-20
+# 2026-01-21
 
 ## Instructions
 You are given an array nums consisting of n prime integers.
